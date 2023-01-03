@@ -5,28 +5,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "units")
-public class UnitEntity {
+@Table(name = "binds")
+public class BindEntity {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private String phoneNumber;
-    private Date date;
-    private String description;
+    @OneToOne
+    @JoinColumn(name = "unit_id")
+    private UnitEntity unitEntity;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
 }
