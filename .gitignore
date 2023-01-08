@@ -71,4 +71,5 @@ buildNumber.properties
 /target
 
 src/main/resources/application-prod.properties
+src/main/resources/application-devserv.properties
 

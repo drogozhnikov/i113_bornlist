@@ -23,6 +23,12 @@ public class UnitConverter {
                 .collect(Collectors.toList());
     }
 
+    public List<UnitEntity> convertDtoToList(List<UnitDto> dtoList){
+        return dtoList.stream()
+                .map(this::convertToEntity)
+                .collect(Collectors.toList());
+    }
+
     public UnitDto convertToDto(UnitEntity inputEntity) {
         return modelMapper.map(inputEntity, UnitDto.class);
     }

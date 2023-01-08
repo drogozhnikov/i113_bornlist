@@ -21,6 +21,11 @@ public class UnitService {
         unitRepository.save(unitEntity);
     }
 
+    public void createAll(List<UnitEntity> unitEntities) {
+        for(UnitEntity entity: unitEntities)
+        unitRepository.save(entity);
+    }
+
     public List<UnitEntity> readAll() {
         return unitRepository.findAll();
     }
@@ -45,4 +50,6 @@ public class UnitService {
         }
         return false;
     }
+
+
 }

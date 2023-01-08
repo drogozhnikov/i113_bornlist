@@ -23,4 +23,9 @@ public class UserEntity {
     private String userName;
     private String telegramId;
 
+    public UserEntity(String userName, String telegramId){
+        this.userName = userName;
+        this.telegramId = telegramId;
+    }
+
 }

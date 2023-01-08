@@ -39,6 +39,10 @@ public class UserService {
         return false;
     }
 
+    public UserEntity findUserByChatId(String chatId){
+        return userRepository.findUserByTelegramId(chatId);
+    }
+
     public boolean delete(int id) {
         if(userRepository.existsById(id)){
             userRepository.deleteById(id);

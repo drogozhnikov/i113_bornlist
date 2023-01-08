@@ -36,6 +36,11 @@ public class UnitController {
         unitService.create(converter.convertToEntity(unitDto));
     }
 
+    @PostMapping("/all")
+    public void createUnit(@RequestBody List<UnitDto> unitDto) {
+        unitService.createAll(converter.convertDtoToList(unitDto));
+    }
+
     @PutMapping("/")
     public void updateUnit(@RequestBody UnitDto unitDto) {
         unitService.update(converter.convertToEntity(unitDto), unitDto.getId());
