@@ -11,9 +11,7 @@
     </parent>
     <groupId>org.example</groupId>
     <artifactId>i113BornList</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>bornlistserv</name>
+    <version>1.0</version>
 
     <build>
         <plugins>
@@ -21,15 +19,17 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>9.10.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <user>postgres</user>
-                    <password>postgrespw</password>
-                    <url>jdbc:postgresql://192.168.100.9:55000/postgres</url>
-                    <defaultSchema>bornlist</defaultSchema>
-                    <cleanDisabled>false</cleanDisabled>
+                    <mainClass>bornlist.BornListApplication</mainClass>
+                    <layout>JAR</layout>
                 </configuration>
             </plugin>
         </plugins>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -65,6 +65,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>2.6.7</version>
         </dependency>
 
         <!-- Log -->
@@ -109,13 +115,6 @@
             <version>42.5.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>1.17.5</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -123,7 +122,6 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-
 
         <dependency>
             <groupId>org.flywaydb</groupId>
@@ -149,6 +147,13 @@
             <version>3.1.0</version>
         </dependency>
 
+        <!-- SpringSecurity -->
+
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <profiles>
@@ -159,12 +164,14 @@
             </properties>
         </profile>
         <profile>
-            <id>devserv</id>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
-                <spring.profiles.active>devserv</spring.profiles.active>
+                <spring.profiles.active>prod</spring.profiles.active>
             </properties>
         </profile>
     </profiles>
-
 
 </project>

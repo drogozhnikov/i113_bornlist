@@ -1,6 +1,5 @@
 package bornlist.service;
 
-import bornlist.entity.UnitEntity;
 import bornlist.entity.UserEntity;
 import bornlist.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -31,7 +30,7 @@ public class UserService {
     }
 
     public boolean update(UserEntity userEntity, int id) {
-        if(userRepository.existsById(id)){
+        if (userRepository.existsById(id)) {
             userEntity.setId(id);
             userRepository.save(userEntity);
             return true;
@@ -39,12 +38,12 @@ public class UserService {
         return false;
     }
 
-    public UserEntity findUserByChatId(String chatId){
+    public UserEntity findUserByChatId(String chatId) {
         return userRepository.findUserByTelegramId(chatId);
     }
 
     public boolean delete(int id) {
-        if(userRepository.existsById(id)){
+        if (userRepository.existsById(id)) {
             userRepository.deleteById(id);
             return true;
         }
