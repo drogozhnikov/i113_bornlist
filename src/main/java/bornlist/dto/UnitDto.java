@@ -13,12 +13,12 @@ public class UnitDto {
     @NonNull
     private Integer id;
     @NonNull
+    private Integer userId;
+    @NonNull
     private String firstName;
-    private String middleName;
+    @NonNull
     private String lastName;
-    private String phoneNumber;
     @NonNull
     private Date date;
-    private String description;
 
 }

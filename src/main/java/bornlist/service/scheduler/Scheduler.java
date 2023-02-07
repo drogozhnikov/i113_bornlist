@@ -1,9 +1,10 @@
 package bornlist.service.scheduler;
 
-import bornlist.dto.UnitDto;
+import bornlist.entity.UnitEntity;
 import bornlist.entity.UserEntity;
-import bornlist.service.BindService;
+import bornlist.model.TelegramUnit;
 import bornlist.service.MessageService;
+import bornlist.service.UnitService;
 import bornlist.service.UserService;
 import bornlist.service.telegram.TelegramBot;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,8 @@ import java.util.List;
 public class Scheduler {
 
     private final TelegramBot telegramBot;
-    private final BindService bindService;
     private final UserService userService;
+    private final UnitService unitService;
     private final MessageService messageService;
 
     private final String REMINDER_START = "telegram.response.reminder.start";
@@ -34,18 +35,23 @@ public class Scheduler {
         action();
     }
 
-//    @Scheduled(fixedRate = 100000)
+//    @Scheduled(fixedRate = 10000)
 //    public void testSheduler(){
-//        action();
+////        action();
+//        String chatId = "425222583";
+//        UserEntity user = userService.findUserByChatId(chatId);
+//        List<UnitEntity> entities = unitService.findByUserId(user.getId());
+//        System.out.println(entities);
 //    }
 
     private void action() {
-        List<UserEntity> userList = userService.readAll();
-        StringBuilder response = new StringBuilder(messageService.getMessage(REMINDER_START));
-        for (UserEntity user : userList) {
-            response.append(messageService.prepareUnits(bindService.findToday(user.getTelegramId())));
-            response.append(messageService.getMessage(REMINDER_END));
-            telegramBot.sendMessage(user.getTelegramId(), response.toString());
-        }
+
+    }
+
+    private TelegramUnit prepareUnit(String chatId){
+        return new TelegramUnit().builder()
+                .userName("test")
+                .chatId(chatId)
+                .build();
     }
 }

@@ -23,10 +23,9 @@ public class UnitEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private Integer userId;
     private String firstName;
-    private String middleName;
     private String lastName;
-    private String phoneNumber;
     private Date date;
-    private String description;
+
 }

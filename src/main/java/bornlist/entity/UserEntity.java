@@ -20,12 +20,16 @@ public class UserEntity {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String chatId;
     private String userName;
-    private String telegramId;
+    private String firstName;
+    private String lastName;
 
-    public UserEntity(String userName, String telegramId){
+    public UserEntity(String chatId, String userName, String firstName, String lastName){
+        this.chatId = chatId;
         this.userName = userName;
-        this.telegramId = telegramId;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
 }

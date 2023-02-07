@@ -1,6 +1,5 @@
 package bornlist.controller;
 
-import bornlist.dto.UnitDto;
 import bornlist.dto.UserDto;
 import bornlist.service.UserService;
 import bornlist.service.converter.UserConverter;
@@ -22,12 +21,12 @@ public class UserController {
 
     @GetMapping("/all")
     public List<UserDto> getAllUsers() {
-        return converter.convertListToDto(userService.readAll());
+        return converter.convertListToDto(userService.findAll());
     }
 
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable("id") int id) {
-        return converter.convertToDto(userService.read(id));
+        return converter.convertToDto(userService.findById(id));
     }
 
     @PostMapping("/")

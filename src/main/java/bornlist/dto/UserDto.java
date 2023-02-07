@@ -7,11 +7,12 @@ import lombok.*;
 @Data
 @Builder
 public class UserDto {
-
     @NonNull
     private Integer id;
     @NonNull
-    private String userName;
+    private Integer chatId;
     @NonNull
-    private String telegramId;
+    private String userName;
+    private String firstName;
+    private String lastName;
 }

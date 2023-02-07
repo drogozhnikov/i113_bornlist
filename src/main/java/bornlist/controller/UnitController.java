@@ -2,9 +2,7 @@ package bornlist.controller;
 
 import bornlist.dto.UnitDto;
 import bornlist.service.UnitService;
-import bornlist.service.UserService;
 import bornlist.service.converter.UnitConverter;
-import bornlist.service.converter.UserConverter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,12 +21,12 @@ public class UnitController {
 
     @GetMapping("/all")
     public List<UnitDto> getAllUnits() {
-        return converter.convertListToDto(unitService.readAll());
+        return converter.convertListToDto(unitService.findAll());
     }
 
     @GetMapping("/{id}")
     public UnitDto getUnitById(@PathVariable("id") int id) {
-        return converter.convertToDto(unitService.read(id));
+        return converter.convertToDto(unitService.findById(id));
     }
 
     @PostMapping("/")

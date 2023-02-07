@@ -21,11 +21,11 @@ public class UserService {
         userRepository.save(userEntity);
     }
 
-    public List<UserEntity> readAll() {
+    public List<UserEntity> findAll() {
         return userRepository.findAll();
     }
 
-    public UserEntity read(int id) {
+    public UserEntity findById(int id) {
         return userRepository.findById(id);
     }
 
@@ -39,7 +39,7 @@ public class UserService {
     }
 
     public UserEntity findUserByChatId(String chatId) {
-        return userRepository.findUserByTelegramId(chatId);
+        return userRepository.findUserByChatId(chatId);
     }
 
     public boolean delete(int id) {

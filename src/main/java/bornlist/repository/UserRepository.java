@@ -10,7 +10,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
     List<UserEntity> findByUserName(String name);
 
-    UserEntity findUserByTelegramId(String chatId);
+    UserEntity findUserByChatId(String chatId);
 
     List<UserEntity> findAll();
 

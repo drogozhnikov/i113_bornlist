@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.generics.WebhookBot;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import javax.annotation.PostConstruct;
@@ -27,7 +27,9 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public ModelMapper getModelMapper(){ return new ModelMapper();}
+    public ModelMapper getModelMapper() {
+        return new ModelMapper();
+    }
 
     @PostConstruct
     public void registerTelegramBot() {

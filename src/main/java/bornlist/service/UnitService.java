@@ -26,12 +26,16 @@ public class UnitService {
         unitRepository.save(entity);
     }
 
-    public List<UnitEntity> readAll() {
+    public List<UnitEntity> findAll() {
         return unitRepository.findAll();
     }
 
-    public UnitEntity read(int id) {
+    public UnitEntity findById(int id) {
         return unitRepository.findById(id);
+    }
+
+    public List<UnitEntity> findByUserId(int userId){
+        return unitRepository.findAllByUserId(userId);
     }
 
     public boolean update(UnitEntity unitEntity, int id) {
@@ -49,6 +53,10 @@ public class UnitService {
             return true;
         }
         return false;
+    }
+
+    public List<UnitEntity> getSortedUnitsById(int userId){
+        return unitRepository.findAllByUserIdOrderByDate(userId);
     }
 
 

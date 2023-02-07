@@ -9,6 +9,10 @@ public interface UnitRepository extends JpaRepository<UnitEntity, Integer> {
 
     List<UnitEntity> findByFirstName(String name);
 
+    List<UnitEntity> findAllByUserId(int userId);
+
+    List<UnitEntity> findAllByUserIdOrderByDate(int userId);
+
     List<UnitEntity> findAll();
 
     UnitEntity findById(int id);
