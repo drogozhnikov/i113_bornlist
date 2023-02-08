@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS users
 CREATE TABLE IF NOT EXISTS units
 (
     id         SERIAL PRIMARY KEY,
-    user_id    INTEGER,
-    first_name VARCHAR(100)        not null,
-    last_name  VARCHAR(100) unique not null,
-    date       date                not null
+    user_id    INTEGER      not null,
+    first_name VARCHAR(100) not null,
+    last_name  VARCHAR(100) not null,
+    date       date         not null
 );
 
 

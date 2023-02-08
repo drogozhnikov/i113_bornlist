@@ -1,5 +1,5 @@
 package bornlist.model;
 
 public enum Command {
-    GET,ADD,HELP
+    GET, ADD, UPDATE, DELETE, LIST, HELP, HELPFULL
 }
