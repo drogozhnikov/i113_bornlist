@@ -1,24 +1,15 @@
 package bornlist.service.scheduler;
 
-import bornlist.entity.UnitEntity;
-import bornlist.entity.UserEntity;
-import bornlist.model.TelegramUnit;
 import bornlist.service.MessageService;
 import bornlist.service.UnitService;
-import bornlist.service.UserService;
-import bornlist.service.telegram.TelegramBot;
 import lombok.AllArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @AllArgsConstructor
 public class Scheduler {
 
-    private final TelegramBot telegramBot;
-    private final UserService userService;
     private final UnitService unitService;
     private final MessageService messageService;
 
@@ -48,10 +39,10 @@ public class Scheduler {
 
     }
 
-    private TelegramUnit prepareUnit(String chatId){
-        return new TelegramUnit().builder()
-                .userName("test")
-                .chatId(chatId)
-                .build();
-    }
+//    private TelegramUnit prepareUnit(String chatId){
+//        return new TelegramUnit().builder()
+//                .userName("test")
+//                .chatId(chatId)
+//                .build();
+//    }
 }

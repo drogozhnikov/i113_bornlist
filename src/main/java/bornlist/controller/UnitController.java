@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/bl/unit")
+@RequestMapping("/api/i113/bornlist/")
 public class UnitController {
 
     private UnitService unitService;
@@ -21,27 +21,17 @@ public class UnitController {
 
     @GetMapping("/all")
     public List<UnitDto> getAllUnits() {
-        return converter.convertListToDto(unitService.findAll());
-    }
-
-    @GetMapping("/{id}")
-    public UnitDto getUnitById(@PathVariable("id") int id) {
-        return converter.convertToDto(unitService.findById(id));
+        return unitService.getAll();
     }
 
     @PostMapping("/")
     public void createUnit(@RequestBody UnitDto unitDto) {
-        unitService.create(converter.convertToEntity(unitDto));
-    }
-
-    @PostMapping("/all")
-    public void createUnit(@RequestBody List<UnitDto> unitDto) {
-        unitService.createAll(converter.convertDtoToList(unitDto));
+        unitService.create(unitDto);
     }
 
     @PutMapping("/")
     public void updateUnit(@RequestBody UnitDto unitDto) {
-        unitService.update(converter.convertToEntity(unitDto), unitDto.getId());
+        unitService.update(unitDto);
     }
 
     @DeleteMapping("/{id}")

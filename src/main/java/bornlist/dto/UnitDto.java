@@ -8,12 +8,11 @@ import java.sql.Date;
 @AllArgsConstructor
 @Data
 @Builder
-public class UnitDto {
+public class UnitDto implements Comparable<UnitDto> {
 
-    @NonNull
     private Integer id;
-    @NonNull
-    private Integer userId;
+
+    private String userName;
     @NonNull
     private String firstName;
     @NonNull
@@ -21,4 +20,10 @@ public class UnitDto {
     @NonNull
     private Date date;
 
+    private String daysLeft;
+
+    @Override
+    public int compareTo(UnitDto o) {
+        return this.daysLeft.compareTo(o.daysLeft);
+    }
 }

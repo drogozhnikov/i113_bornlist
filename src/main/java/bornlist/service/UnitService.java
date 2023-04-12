@@ -1,63 +1,51 @@
 package bornlist.service;
 
+import bornlist.dto.UnitDto;
 import bornlist.entity.UnitEntity;
+import bornlist.exception.BlException;
 import bornlist.repository.UnitRepository;
+import bornlist.service.converter.UnitConverter;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class UnitService {
 
-    private UnitRepository unitRepository;
-    private final MessageService messageService;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private UnitRepository repository;
+    private UnitConverter converter;
 
-    public void create(UnitEntity unitEntity) {
-        unitRepository.save(unitEntity);
+    public List<UnitDto> getAll() {
+        return converter.convertEntitiesToDto(repository.findAll());
     }
 
-    public void createAll(List<UnitEntity> unitEntities) {
-        for(UnitEntity entity: unitEntities)
-        unitRepository.save(entity);
+    public void create(UnitDto unitDto) {
+        repository.save(converter.convertDtoToEntity(unitDto));
     }
 
-    public List<UnitEntity> findAll() {
-        return unitRepository.findAll();
-    }
-
-    public UnitEntity findById(int id) {
-        return unitRepository.findById(id);
-    }
-
-    public List<UnitEntity> findByUserId(int userId){
-        return unitRepository.findAllByUserId(userId);
-    }
-
-    public boolean update(UnitEntity unitEntity, int id) {
-        if(unitRepository.existsById(id)){
-            unitEntity.setId(id);
-            unitRepository.save(unitEntity);
-            return true;
+    public UnitDto update(UnitDto unitDto) {
+        Optional<UnitEntity> entity = repository.findById(unitDto.getId());
+        if (entity.isPresent()) {
+            UnitEntity updatedEntity = converter.convertDtoToEntity(unitDto);
+            updatedEntity.setId(entity.get().getId());
+            updatedEntity = repository.save(updatedEntity);
+            return converter.convertEntityToDto(updatedEntity);
         }
-        return false;
+        throw new BlException("Update error", HttpStatus.BAD_REQUEST);
     }
 
-    public boolean delete(int id) {
-        if(unitRepository.existsById(id)){
-            unitRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void delete(int id) {
+        Optional<UnitEntity> entity = repository.findById(id);
+        entity.ifPresent(mailEntity -> repository.delete(mailEntity));
     }
 
-    public List<UnitEntity> getSortedUnitsById(int userId){
-        return unitRepository.findAllByUserIdOrderByDate(userId);
-    }
+//    public List<UnitDto> getSortedUnitsById(int userId){
+//        return converter.convertEntitiesToDto(repository.findAllByUserIdOrderByDate(userId));
+//    }
 
 
 }

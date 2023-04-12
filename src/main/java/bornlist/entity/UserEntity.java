@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,16 +19,10 @@ public class UserEntity {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String chatId;
+
     private String userName;
-    private String firstName;
-    private String lastName;
 
-    public UserEntity(String chatId, String userName, String firstName, String lastName){
-        this.chatId = chatId;
+    public UserEntity(String userName){
         this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
-
 }
