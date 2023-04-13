@@ -20,6 +20,8 @@ public class UnitDto implements Comparable<UnitDto> {
     @NonNull
     private Date date;
 
+    private String description;
+
     private String daysLeft;
 
     @Override

@@ -43,6 +43,12 @@ public class UnitService {
         entity.ifPresent(mailEntity -> repository.delete(mailEntity));
     }
 
+    public void createMultiple(List<UnitDto> accountDtos) {
+        for (UnitDto dto : accountDtos) {
+            repository.save(converter.convertDtoToEntity(dto));
+        }
+    }
+
 //    public List<UnitDto> getSortedUnitsById(int userId){
 //        return converter.convertEntitiesToDto(repository.findAllByUserIdOrderByDate(userId));
 //    }
