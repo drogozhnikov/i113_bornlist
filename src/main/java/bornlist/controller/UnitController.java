@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin //needed to Vue
 @RequestMapping("/api/i113/bornlist/")
 public class UnitController {
 

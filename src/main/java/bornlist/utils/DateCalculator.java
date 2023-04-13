@@ -16,7 +16,12 @@ public class DateCalculator {
 
     public String countDaysBetweenToday(Date date){
         DateTime today = new DateTime();
-        DateTime birthday = new DateTime(date.getTime());
+        DateTime inputDate = new DateTime(date.getTime());
+        DateTime birthday = new DateTime(
+                today.getYear(),
+                inputDate.getMonthOfYear(),
+                inputDate.getDayOfMonth(),
+                0,0);
         if(birthday.isBefore(today)){
             birthday = new DateTime(
                     today.getYear()+1,
@@ -41,4 +46,5 @@ public class DateCalculator {
         }
         return String.valueOf(test);
     }
+
 }

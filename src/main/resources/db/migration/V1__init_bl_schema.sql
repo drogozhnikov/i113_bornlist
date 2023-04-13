@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS units
     user_id    INTEGER      not null,
     first_name VARCHAR(100) not null,
     last_name  VARCHAR(100) not null,
-    date       date         not null
+    date       date         not null,
+    description text
 );
 
 
