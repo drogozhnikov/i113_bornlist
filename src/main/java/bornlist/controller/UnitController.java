@@ -26,13 +26,13 @@ public class UnitController {
     }
 
     @PostMapping("/")
-    public void createUnit(@RequestBody UnitDto unitDto) {
-        unitService.create(unitDto);
+    public UnitDto createUnit(@RequestBody UnitDto unitDto) {
+        return unitService.create(unitDto);
     }
 
     @PutMapping("/")
-    public void updateUnit(@RequestBody UnitDto unitDto) {
-        unitService.update(unitDto);
+    public UnitDto updateUnit(@RequestBody UnitDto unitDto) {
+       return unitService.update(unitDto);
     }
 
     @DeleteMapping("/{id}")

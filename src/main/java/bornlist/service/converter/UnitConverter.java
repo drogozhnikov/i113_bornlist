@@ -32,6 +32,7 @@ public class UnitConverter {
     public UnitDto convertEntityToDto(UnitEntity inputEntity) {
         return UnitDto.builder()
                 .id(inputEntity.getId())
+                .userName(inputEntity.getUserEntity().getUserName())
                 .firstName(inputEntity.getFirstName())
                 .lastName(inputEntity.getLastName())
                 .date(inputEntity.getDate())

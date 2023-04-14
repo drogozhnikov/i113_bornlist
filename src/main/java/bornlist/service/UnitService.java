@@ -23,8 +23,9 @@ public class UnitService {
         return converter.convertEntitiesToDto(repository.findAll());
     }
 
-    public void create(UnitDto unitDto) {
-        repository.save(converter.convertDtoToEntity(unitDto));
+    public UnitDto create(UnitDto unitDto) {
+        UnitEntity entity = repository.save(converter.convertDtoToEntity(unitDto));
+        return converter.convertEntityToDto(entity);
     }
 
     public UnitDto update(UnitDto unitDto) {

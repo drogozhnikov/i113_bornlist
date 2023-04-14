@@ -10,9 +10,9 @@ import java.sql.Date;
 @Builder
 public class UnitDto implements Comparable<UnitDto> {
 
-    private Integer id;
+    private int id;
 
-    private String userName;
+    private String userName = "drogozhnikov";
     @NonNull
     private String firstName;
     @NonNull
