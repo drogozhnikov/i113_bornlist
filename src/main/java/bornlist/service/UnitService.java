@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,11 @@ public class UnitService {
     private UnitConverter converter;
 
     public List<UnitDto> getAll() {
-        return converter.convertEntitiesToDto(repository.findAll());
+        List<UnitEntity> entitiesList = repository.findAll();
+        if(entitiesList.size()>0){
+            return converter.convertEntitiesToDto(entitiesList);
+        }
+        return new ArrayList<>();
     }
 
     public UnitDto create(UnitDto unitDto) {

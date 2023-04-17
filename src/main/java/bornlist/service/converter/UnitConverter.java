@@ -37,6 +37,7 @@ public class UnitConverter {
                 .lastName(inputEntity.getLastName())
                 .date(inputEntity.getDate())
                 .daysLeft(calculator.countDaysBetweenToday(inputEntity.getDate()))
+                .notify(inputEntity.isNotify())
                 .description(inputEntity.getDescription())
                 .build();
     }
@@ -47,6 +48,7 @@ public class UnitConverter {
                 .firstName(inputDTO.getFirstName())
                 .lastName(inputDTO.getLastName())
                 .date(inputDTO.getDate())
+                .notify(inputDTO.isNotify())
                 .description(inputDTO.getDescription())
                 .build();
     }
