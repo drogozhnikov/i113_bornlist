@@ -11,7 +11,7 @@ import java.sql.Date;
 public class UnitDto implements Comparable<UnitDto> {
 
     private int id;
-
+    @NonNull
     private String userName = "drogozhnikov";
     @NonNull
     private String firstName;

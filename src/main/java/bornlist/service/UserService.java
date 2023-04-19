@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,5 +21,9 @@ public class UserService {
             return repository.findUserEntityByUserName(userName).orElseGet(() -> repository.save(new UserEntity(userName)));
         }
         throw new BlException("Please user name", HttpStatus.BAD_REQUEST);
+    }
+
+    public List<UserEntity> getAll(){
+        return repository.findAll();
     }
 }

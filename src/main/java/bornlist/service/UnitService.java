@@ -55,9 +55,12 @@ public class UnitService {
         }
     }
 
-//    public List<UnitDto> getSortedUnitsById(int userId){
-//        return converter.convertEntitiesToDto(repository.findAllByUserIdOrderByDate(userId));
-//    }
-
+    public List<UnitDto> findAllByNotifyIsTrue(){
+        List<UnitEntity> entityList = repository.findAllByNotifyIsTrue();
+        if(entityList.size()>0){
+            return converter.convertEntitiesToDto(entityList);
+        }
+        return new ArrayList<>();
+    }
 
 }
