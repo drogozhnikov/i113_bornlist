@@ -24,6 +24,7 @@ public class UnitEntity {
     private String firstName;
     private String lastName;
     private Date date;
+    private boolean notify;
     private String description;
 
     @ManyToOne
