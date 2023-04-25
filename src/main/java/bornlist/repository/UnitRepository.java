@@ -9,10 +9,9 @@ import java.util.Optional;
 
 public interface UnitRepository extends JpaRepository<UnitEntity, Integer> {
 
-//    List<UnitEntity> findAllByUserIdOrderByDate(int userId);
     List<UnitEntity> findAllByNotifyIsTrue();
 
-    List<UnitEntity> findAll();
+    List<UnitEntity> findAllByUserEntity_UserName(String userEntity_userName);
 
     void deleteById(int id);
 }

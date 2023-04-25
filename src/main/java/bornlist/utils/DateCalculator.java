@@ -38,12 +38,6 @@ public class DateCalculator {
         if(test == 366){
             return TODAY;
         }
-        if(test == 1){
-            return TOMORROW;
-        }
-        if(test == 2){
-            return AFTERTOMORROW;
-        }
         return String.valueOf(test);
     }
 
