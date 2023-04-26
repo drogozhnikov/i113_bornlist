@@ -2,6 +2,7 @@ package bornlist.service;
 
 import bornlist.dto.UnitDto;
 import bornlist.entity.UnitEntity;
+import bornlist.entity.UserEntity;
 import bornlist.exception.BlException;
 import bornlist.repository.UnitRepository;
 import bornlist.service.converter.UnitConverter;
@@ -19,9 +20,11 @@ public class UnitService {
 
     private UnitRepository repository;
     private UnitConverter converter;
+    private UserService userService;
 
-    public List<UnitDto> getAll() {
-        List<UnitEntity> entitiesList = repository.findAll();
+    public List<UnitDto> getAll(String user) {
+        UserEntity userEntity = userService.findOrSaveAndGetMail(user);
+        List<UnitEntity> entitiesList = repository.findAllByUserEntity(userEntity);
         if(entitiesList.size()>0){
             return converter.convertEntitiesToDto(entitiesList);
         }

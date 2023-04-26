@@ -11,7 +11,7 @@ public interface UnitRepository extends JpaRepository<UnitEntity, Integer> {
 
     List<UnitEntity> findAllByNotifyIsTrue();
 
-    List<UnitEntity> findAllByUserEntity_UserName(String userEntity_userName);
+    List<UnitEntity> findAllByUserEntity(UserEntity userEntity);
 
     void deleteById(int id);
 }

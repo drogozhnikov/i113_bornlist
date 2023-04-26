@@ -22,8 +22,8 @@ public class UnitController {
     }
 
     @GetMapping("/all")
-    public List<UnitDto> getAllUnits() {
-        return unitService.getAll();
+    public List<UnitDto> getAllUnits(@RequestHeader(value = "user") String authorization) {
+        return unitService.getAll(authorization);
     }
 
     @PostMapping("/")
