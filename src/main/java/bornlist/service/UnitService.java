@@ -62,7 +62,7 @@ public class UnitService {
         }
     }
     public void loadAndReplaceJson(String userName, List<UnitDto> accountDtos){
-        repository.deleteAll();
+//        repository.deleteAll(); //TODO Check Check Check
         for (UnitDto dto : accountDtos) {
             repository.save(converter.convertDtoToEntity(dto));
         }
