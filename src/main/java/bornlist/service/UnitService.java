@@ -10,9 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -53,6 +51,18 @@ public class UnitService {
     }
 
     public void createMultiple(List<UnitDto> accountDtos) {
+        for (UnitDto dto : accountDtos) {
+            repository.save(converter.convertDtoToEntity(dto));
+        }
+    }
+
+    public void loadJson(String userName, List<UnitDto> accountDtos){
+        for (UnitDto dto : accountDtos) {
+            repository.save(converter.convertDtoToEntity(dto));
+        }
+    }
+    public void loadAndReplaceJson(String userName, List<UnitDto> accountDtos){
+        repository.deleteAll();
         for (UnitDto dto : accountDtos) {
             repository.save(converter.convertDtoToEntity(dto));
         }

@@ -20,7 +20,14 @@ public class UserService {
         if (Optional.ofNullable(userName).isPresent()) {
             return repository.findUserEntityByUserName(userName).orElseGet(() -> repository.save(new UserEntity(userName)));
         }
-        throw new BlException("Please user name", HttpStatus.BAD_REQUEST);
+        throw new BlException("Please check user name", HttpStatus.BAD_REQUEST);
+    }
+
+    public UserEntity findByUserName(String userName){
+        if (Optional.ofNullable(userName).isPresent()) {
+            return repository.findUserEntityByUserName(userName).get();
+        }
+        throw new BlException("Please check user name", HttpStatus.BAD_REQUEST);
     }
 
     public List<UserEntity> getAll(){

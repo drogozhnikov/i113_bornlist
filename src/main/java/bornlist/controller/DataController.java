@@ -16,7 +16,14 @@ public class DataController {
     private UnitService unitService;
 
     @PostMapping("/loadJson")
-    public void loadJson2(@RequestPart MultipartFile file) {
-        unitService.createMultiple(dataService.readJson(file));
+    public void loadJson(@RequestParam String username, @RequestPart MultipartFile file) {
+        unitService.loadJson(username,dataService.readJson(file));
     }
+
+    @PostMapping("/loadAndReplaceJson")
+    public void loadAndReplaceJson(@RequestParam String username, @RequestPart MultipartFile file) {
+        unitService.loadAndReplaceJson(username,dataService.readJson(file));
+    }
+
+
 }

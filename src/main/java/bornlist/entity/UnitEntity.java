@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @Table(name = "units")
-public class UnitEntity {
+public class UnitEntity  implements Comparable<UnitEntity>{
 
     @Id
     @Column(name = "id")
@@ -31,4 +31,12 @@ public class UnitEntity {
     @JoinColumn(name = "user_id")
     private UserEntity userEntity;
 
+    @Override
+    public int compareTo(UnitEntity o) {
+        if(firstName.equals(o.getFirstName())&&lastName.equals(o.lastName)&&date.getTime()==o.getDate().getTime()){
+            return 0;
+        }else{
+            return 1;
+        }
+    }
 }
