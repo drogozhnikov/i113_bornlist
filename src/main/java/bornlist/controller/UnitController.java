@@ -3,12 +3,13 @@ package bornlist.controller;
 import bornlist.dto.UnitDto;
 import bornlist.service.UnitService;
 import bornlist.service.converter.UnitConverter;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin //needed to Vue
+//@CrossOrigin //needed to Vue
 @RequestMapping("/api/i113/bornlist/")
 public class UnitController {
 
@@ -21,8 +22,8 @@ public class UnitController {
     }
 
     @GetMapping("/all")
-    public List<UnitDto> getAllUnits() {
-        return unitService.getAll();
+    public List<UnitDto> getAllUnits(@RequestHeader(value = "user") String authorization) {
+        return unitService.getAll(authorization);
     }
 
     @PostMapping("/")

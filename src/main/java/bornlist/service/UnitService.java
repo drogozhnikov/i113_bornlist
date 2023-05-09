@@ -2,6 +2,7 @@ package bornlist.service;
 
 import bornlist.dto.UnitDto;
 import bornlist.entity.UnitEntity;
+import bornlist.entity.UserEntity;
 import bornlist.exception.BlException;
 import bornlist.repository.UnitRepository;
 import bornlist.service.converter.UnitConverter;
@@ -9,9 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -19,9 +18,11 @@ public class UnitService {
 
     private UnitRepository repository;
     private UnitConverter converter;
+    private UserService userService;
 
-    public List<UnitDto> getAll() {
-        List<UnitEntity> entitiesList = repository.findAll();
+    public List<UnitDto> getAll(String user) {
+        UserEntity userEntity = userService.findOrSaveAndGetMail(user);
+        List<UnitEntity> entitiesList = repository.findAllByUserEntity(userEntity);
         if(entitiesList.size()>0){
             return converter.convertEntitiesToDto(entitiesList);
         }
@@ -55,9 +56,24 @@ public class UnitService {
         }
     }
 
-//    public List<UnitDto> getSortedUnitsById(int userId){
-//        return converter.convertEntitiesToDto(repository.findAllByUserIdOrderByDate(userId));
-//    }
+    public void loadJson(String userName, List<UnitDto> accountDtos){
+        for (UnitDto dto : accountDtos) {
+            repository.save(converter.convertDtoToEntity(dto));
+        }
+    }
+    public void loadAndReplaceJson(String userName, List<UnitDto> accountDtos){
+//        repository.deleteAll(); //TODO Check Check Check
+        for (UnitDto dto : accountDtos) {
+            repository.save(converter.convertDtoToEntity(dto));
+        }
+    }
 
+    public List<UnitDto> findAllByNotifyIsTrue(){
+        List<UnitEntity> entityList = repository.findAllByNotifyIsTrue();
+        if(entityList.size()>0){
+            return converter.convertEntitiesToDto(entityList);
+        }
+        return new ArrayList<>();
+    }
 
 }

@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS units
     last_name   VARCHAR(100) not null,
     notify      boolean      NOT NULL DEFAULT FALSE,
     date        date         not null,
-    description text
+    description text,
+    UNIQUE (first_name, last_name, date)
 );
 
 
