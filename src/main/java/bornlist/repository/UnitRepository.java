@@ -13,5 +13,7 @@ public interface UnitRepository extends JpaRepository<UnitEntity, Integer> {
 
     List<UnitEntity> findAllByUserEntity(UserEntity userEntity);
 
+    void deleteAllByUserEntity(UserEntity userEntity);
+
     void deleteById(int id);
 }
