@@ -50,20 +50,22 @@ public class UnitService {
         entity.ifPresent(mailEntity -> repository.delete(mailEntity));
     }
 
-    public void createMultiple(List<UnitDto> accountDtos) {
-        for (UnitDto dto : accountDtos) {
-            repository.save(converter.convertDtoToEntity(dto));
-        }
+    public void deleteAll(String username) {
+        UserEntity user = userService.findByUserName(username);
+        List<UnitEntity> entityList = repository.findAllByUserEntity(user);
+            if(entityList.size()>0){
+                repository.deleteAll(entityList);
+            }
     }
 
-    public void loadJson(String userName, List<UnitDto> accountDtos){
-        for (UnitDto dto : accountDtos) {
+    public void loadJson(String userName, List<UnitDto> unitDtos){
+        for (UnitDto dto : unitDtos) {
             repository.save(converter.convertDtoToEntity(dto));
         }
     }
-    public void loadAndReplaceJson(String userName, List<UnitDto> accountDtos){
-//        repository.deleteAll(); //TODO Check Check Check
-        for (UnitDto dto : accountDtos) {
+    public void loadAndReplaceJson(String userName, List<UnitDto> unitDtos){
+//        deleteAll(userName); //Check accountDtos username equals userName
+        for (UnitDto dto : unitDtos) {
             repository.save(converter.convertDtoToEntity(dto));
         }
     }

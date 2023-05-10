@@ -40,4 +40,9 @@ public class UnitController {
     public void deleteUnit(@PathVariable("id") int id) {
         unitService.delete(id);
     }
+
+    @DeleteMapping("/")
+    public void deleteAllUnit(@RequestHeader(value = "user") String userName) {
+        unitService.deleteAll(userName);
+    }
 }
