@@ -26,20 +26,20 @@ public class Scheduler {
     private final String REMINDER_START = "telegram.response.reminder.start";
     private final String REMINDER_END = "telegram.response.reminder.end";
 
-//    @Scheduled(cron = "${interval-in-cron-morning}")
-//    public void morningSheduler() {
-//        action();
-//    }
-
     @Scheduled(cron = "${interval-in-cron-evening}")
     public void eveningSheduler() {
         action();
     }
 
-    @Scheduled(fixedRate = 10000)
-    public void testSheduler() {
+//    @Scheduled(cron = "${interval-in-cron-test}")
+//    public void timedTestSheduler() {
 //        action();
-    }
+//    }
+
+//    @Scheduled(fixedRate = 10000)
+//    public void testSheduler() {
+////        action();
+//    }
 
     private void action() {
         ArrayList<MessageDto> preparedUnits = prepareShedulerUnits();
@@ -96,7 +96,7 @@ public class Scheduler {
             StringBuilder message = prepareMessage(inputMap.get(userName));
             if (message.length() > 0) {
                 resultList.add(MessageDto.builder()
-                        .userName(userName)
+                        .regUser(userName)
                         .message(message.toString())
                         .build());
             }
