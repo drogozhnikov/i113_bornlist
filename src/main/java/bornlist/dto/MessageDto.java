@@ -10,7 +10,7 @@ import lombok.*;
 public class MessageDto {
 
     @NonNull
-    private String userName;
+    private String regUser;
     @NonNull
     private String message;
 }

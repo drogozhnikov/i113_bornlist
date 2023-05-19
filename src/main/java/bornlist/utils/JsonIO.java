@@ -1,12 +1,14 @@
 package bornlist.utils;
 
 import bornlist.dto.UnitDto;
+import bornlist.exception.BlException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
 import org.apache.http.entity.StringEntity;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,7 +49,7 @@ public class JsonIO {
             }
 
         } catch (Exception e) {
-            System.out.println("Smth Wrong");
+            throw new BlException("Can't Convert", HttpStatus.BAD_REQUEST);
         }
         return dtoList;
     }

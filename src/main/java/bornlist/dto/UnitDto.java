@@ -12,7 +12,7 @@ public class UnitDto implements Comparable<UnitDto> {
 
     private int id;
     @NonNull
-    private String userName = "drogozhnikov";
+    private String userName;
     @NonNull
     private String firstName;
     @NonNull
