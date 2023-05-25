@@ -23,9 +23,6 @@ public class Scheduler {
     private final UserService userService;
     private final MessageService messageService;
 
-    private final String REMINDER_START = "telegram.response.reminder.start";
-    private final String REMINDER_END = "telegram.response.reminder.end";
-
     @Scheduled(cron = "${interval-in-cron-evening}")
     public void eveningSheduler() {
         action();
