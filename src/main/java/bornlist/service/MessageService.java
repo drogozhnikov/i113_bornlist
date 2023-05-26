@@ -1,8 +1,6 @@
 package bornlist.service;
 
 import bornlist.dto.MessageDto;
-import bornlist.dto.UnitDto;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpEntity;
@@ -20,7 +18,7 @@ public class MessageService {
     @Value("${telegram-service-url}")
     private String telegramUrl;
 
-    public MessageService(MessageSource messageSource){
+    public MessageService(MessageSource messageSource) {
         this.messageSource = messageSource;
     }
 
@@ -28,7 +26,7 @@ public class MessageService {
         return messageSource.getMessage(code, null, Locale.getDefault());
     }
 
-    public void sendMessageToTelegram(MessageDto messageDto){
+    public void sendMessageToTelegram(MessageDto messageDto) {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<MessageDto> request = new HttpEntity<>(messageDto);
         restTemplate.postForObject(telegramUrl, request, MessageDto.class);

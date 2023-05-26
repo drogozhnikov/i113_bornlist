@@ -3,7 +3,6 @@ package bornlist.service;
 import bornlist.dto.UnitDto;
 import bornlist.exception.BlException;
 import bornlist.utils.JsonIO;
-import com.sun.tools.internal.xjc.reader.dtd.bindinfo.BIElement;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
@@ -33,14 +32,15 @@ public class DataService {
     public List<UnitDto> readJson(String username, MultipartFile file) {
         List<UnitDto> inputList = jsonIO.jsonToEntity(file);
         List<UnitDto> filteredList = jsonIO.filterByUserName(username, inputList);
-        if(inputList.size()!=filteredList.size()){
+        if (inputList.size() != filteredList.size()) {
             throw new BlException("Username missmatch found. Check Json file.", HttpStatus.BAD_REQUEST);
         }
         return filteredList;
     }
 
     public File getTemplateFile() throws IOException {
-        File file = new ClassPathResource(fileName).getFile();;
+        File file = new ClassPathResource(fileName).getFile();
+        ;
         return file;
     }
 }

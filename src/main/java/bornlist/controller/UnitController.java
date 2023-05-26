@@ -3,7 +3,6 @@ package bornlist.controller;
 import bornlist.dto.UnitDto;
 import bornlist.service.UnitService;
 import bornlist.service.converter.UnitConverter;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class UnitController {
 
     @PutMapping("/")
     public UnitDto updateUnit(@RequestBody UnitDto unitDto) {
-       return unitService.update(unitDto);
+        return unitService.update(unitDto);
     }
 
     @DeleteMapping("/{id}")

@@ -25,12 +25,12 @@ public class DataController {
 
     @PostMapping("/loadJson")
     public void loadJson(@RequestParam String username, @RequestPart MultipartFile file) {
-        unitService.loadJson(username,dataService.readJson(username,file));
+        unitService.loadJson(username, dataService.readJson(username, file));
     }
 
     @PostMapping("/loadAndReplaceJson")
     public void loadAndReplaceJson(@RequestParam String username, @RequestPart MultipartFile file) {
-        unitService.replaceAll(username,dataService.readJson(username,file));
+        unitService.replaceAll(username, dataService.readJson(username, file));
     }
 
     @GetMapping("/template")
