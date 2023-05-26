@@ -5,9 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 import javax.persistence.*;
+import java.sql.Date;
 
 @Data
 @NoArgsConstructor

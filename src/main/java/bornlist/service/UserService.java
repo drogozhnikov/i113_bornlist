@@ -23,14 +23,14 @@ public class UserService {
         throw new BlException("Please check user name", HttpStatus.BAD_REQUEST);
     }
 
-    public UserEntity findByUserName(String userName){
+    public UserEntity findByUserName(String userName) {
         if (Optional.ofNullable(userName).isPresent()) {
             return repository.findUserEntityByUserName(userName).get();
         }
         throw new BlException("Please check user name", HttpStatus.BAD_REQUEST);
     }
 
-    public List<UserEntity> getAll(){
+    public List<UserEntity> getAll() {
         return repository.findAll();
     }
 }
