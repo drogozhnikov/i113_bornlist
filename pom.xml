@@ -12,6 +12,7 @@
     <groupId>org.example</groupId>
     <artifactId>i113BornList</artifactId>
     <version>1.0</version>
+    <name>BornListApplication</name>
 
     <properties>
         <java.version>1.8</java.version>
