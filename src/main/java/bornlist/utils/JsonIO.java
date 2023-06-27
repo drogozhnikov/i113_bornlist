@@ -47,7 +47,7 @@ public class JsonIO {
             }
 
         } catch (Exception e) {
-            throw new BlException("Can't Convert", HttpStatus.BAD_REQUEST);
+            throw new BlException("Can't Convert" + e.getLocalizedMessage(), HttpStatus.BAD_REQUEST);
         }
         return dtoList;
     }
