@@ -11,8 +11,6 @@ import java.sql.Date;
 public class DateCalculator {
 
     private final String TODAY = "Today";
-    private final String TOMORROW = "Tomorrow";
-    private final String AFTERTOMORROW = "Day after tomorrow";
 
     public String countDaysBetweenToday(Date date){
         DateTime today = new DateTime();

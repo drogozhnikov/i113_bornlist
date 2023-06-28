@@ -1,6 +1,8 @@
 package bornlist.controller;
 
+import bornlist.dto.MessageDto;
 import bornlist.service.DataService;
+import bornlist.service.MessageService;
 import bornlist.service.UnitService;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
@@ -22,6 +24,7 @@ public class DataController {
 
     private DataService dataService;
     private UnitService unitService;
+    private MessageService messageService;
 
     @PostMapping("/loadJson")
     public void loadJson(@RequestParam String username, @RequestPart MultipartFile file) {
@@ -50,6 +53,16 @@ public class DataController {
                 MediaType.parseMediaType("application/txt")).body(resource);
 
         return responseEntity;
+    }
+
+    @GetMapping("/sendMessage")
+    public void sendMessage(@RequestHeader(value = "user") String regUser) {
+        messageService.sendMessageToTelegram(
+                MessageDto.builder()
+                        .regUser(regUser)
+                        .message("Test Message")
+                        .build()
+        );
     }
 
 }
